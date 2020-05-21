@@ -18,54 +18,88 @@
             user-select: none;
 
         }
+
+        .card {
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06);
+            padding: 24px;
+            border-radius: 10px;
+            margin-top:36px;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+        }
+
+        h1,
+        label {
+            font-size: 24px;
+        }
+
+        label {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 200px;
+            background: rgb(196, 219, 238);
+            text-align: center;
+            font-size: 18px;
+            padding-top: 3px;
+            margin-right: 12px;
+        }
+        .para{
+            padding: 10px 40px;
+        }
+        .para >p{
+            margin-bottom: 20px;
+        }
     </style>
 
 </head>
 
 <body class="bg-gray-200">
-    <div class="p-8">
+    <div class="px-8 pb-8">
 
 
 
         <!-- Article -->
-        <article class="p-8 bg-white shadow-md rounded my-4">
-            <div class="text-xl flex">
-                <div class="w-8 h-8 rounded-full bg-gray-300 text-center mr-5">1</div>
+        <article class="card">
+            <div class="title">
+                <label>1</label>
                 <h1 class="">
                     Install Tailwind via npm
                 </h1>
             </div>
-            <p class="pl-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero fugit cum sed natus itaque, rem pariatur
-                sit minima inventore? Facilis, explicabo. Nobis error, repellat aliquid unde optio suscipit officiis
-                voluptates.</p>
-            <div id="bp1" class="ml-12 mt-2" data-file="test.txt" width="1000" height="200"></div>
-        </article>
-       
-        <article class="p-8 bg-white shadow-md rounded my-4">
-            <div class="text-xl flex">
-                <div class="w-8 h-8 rounded-full bg-gray-300 text-center mr-5">1</div>
-                <h1 class="">
-                    Install Tailwind via npm
-                </h1>
+            <div class="para">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero fugit cum sed natus itaque,
+                    rem pariatur
+                    sit minima inventore? Facilis, explicabo. Nobis error, repellat aliquid unde optio suscipit officiis
+                    voluptates.</p>
+                <div id="bp1" data-file="test.txt" width="1500" height="400"></div>
             </div>
-            <p class="pl-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero fugit cum sed natus itaque, rem pariatur
-                sit minima inventore? Facilis, explicabo. Nobis error, repellat aliquid unde optio suscipit officiis
-                voluptates.</p>
-            <div id="bp1" class="ml-12 mt-2" data-file="test.txt" width="1000" height="200"></div>
         </article>
 
-        <article class="p-8 bg-white shadow-md rounded my-4">
-            <div class="text-xl flex">
-                <div class="w-8 h-8 rounded-full bg-gray-300 text-center mr-5">1</div>
+        <article class="card">
+            <div class="title">
+                <label>2</label>
                 <h1 class="">
                     Install Tailwind via npm
                 </h1>
             </div>
-            <p class="pl-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero fugit cum sed natus itaque, rem pariatur
-                sit minima inventore? Facilis, explicabo. Nobis error, repellat aliquid unde optio suscipit officiis
-                voluptates.</p>
-            <div id="bp1" class="ml-12 mt-2" data-file="test.txt" width="1000" height="200"></div>
+            <div class="para">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero fugit cum sed natus itaque,
+                    rem pariatur
+                    sit minima inventore? Facilis, explicabo. Nobis error, repellat aliquid unde optio suscipit officiis
+                    voluptates.</p>
+                <div id="bp1" data-file="test.txt" width="1500" height="400"></div>
+            </div>
         </article>
+
+
+
+
+
+
 
 
     </div>
