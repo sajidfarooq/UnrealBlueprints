@@ -1,4 +1,4 @@
-Begin Object Class=BlueprintGraph.K2Node_FunctionEntry Name="K2Node_FunctionEntry_0"
+Begin Object Class=K2Node_FunctionEntry Name="K2Node_FunctionEntry_0"
    FunctionReference=(MemberParent=Class'"/Script/Engine.Actor"',MemberName="UserConstructionScript")
    NodeGuid=1AC0B4404ECB0AE091F2B7B0763C3D8E
    CustomProperties Pin (PinId=5507548C4A1096EC683807B65E0CBDA6,PinName="then",Direction="EGPD_Output",PinType.PinCategory="exec",PinType.PinSubCategory="",PinType.PinSubCategoryObject=None,PinType.PinSubCategoryMemberReference=(),PinType.PinValueType=(),PinType.ContainerType=None,PinType.bIsReference=False,PinType.bIsConst=False,PinType.bIsWeakPointer=False,LinkedTo=(K2Node_CallFunction_0 2B9DBCCD4380A9E4373B75ADADC93D92,),PersistentGuid=00000000000000000000000000000000,bHidden=False,bNotConnectable=False,bDefaultValueIsReadOnly=False,bDefaultValueIsIgnored=False,bAdvancedView=False,bOrphanedPin=False,)
