@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blue Print Renderer name changed</title>
+    <title>MR BluePrints Repository</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
@@ -24,7 +24,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -1px rgba(0, 0, 0, .06);
             padding: 24px;
             border-radius: 10px;
-            margin-top:36px;
+            margin-top: 36px;
         }
 
         .title {
@@ -47,10 +47,12 @@
             padding-top: 3px;
             margin-right: 12px;
         }
-        .para{
+
+        .para {
             padding: 10px 40px;
         }
-        .para >p{
+
+        .para>p {
             margin-bottom: 20px;
         }
     </style>
@@ -61,24 +63,22 @@
     <div class="px-8 pb-8">
 
 
-
         <!-- Article -->
         <article class="card">
             <div class="title">
                 <label>1</label>
                 <h1 class="">
-                    Install Tailwind via npm Script file seperated
+                    Create a Procedural Mesh
                 </h1>
             </div>
             <div class="para">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero fugit cum sed natus itaque,
-                    rem pariatur
-                    sit minima inventore? Facilis, explicabo. Nobis error, repellat aliquid unde optio suscipit officiis
-                    voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis sed, voluptatibus laboriosam asperiores ad suscipit sequi quasi cumque magni veniam recusandae minima voluptates, at tempora! Voluptatem consectetur quod voluptatibus illo.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo qui nulla vero rerum ad earum quos ab dicta inventore placeat, sunt modi fuga, iure alias doloremque ullam, reiciendis culpa temporibus.
+                <p>
+                    Create a mesh at runtime using the Procedural Mesh Component. This example exposes 3 vectors
+                    to the editor that allow you to change the vertices in the editor.<br />
+                    Tip: You can expose variables as "3D widgets" that can be maniuplated at runtime by enablind the
+                    "Show 3D widget" option in the blueprint.
                 </p>
-                <div id="bp1" data-file="test.txt" width="1500" height="400"></div>
+                <div id="bp1" data-file="test.txt" width="800" height="400"></div>
             </div>
         </article>
 
@@ -86,27 +86,92 @@
             <div class="title">
                 <label>2</label>
                 <h1 class="">
-                    Install Tailwind via npm
+                    Path Animation
                 </h1>
             </div>
             <div class="para">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero fugit cum sed natus itaque,
-                    rem pariatur
-                    sit minima inventore? Facilis, explicabo. Nobis error, repellat aliquid unde optio suscipit officiis
-                    voluptates. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo dolore dolor laborum fuga perferendis, accusantium voluptate hic mollitia eos et culpa aliquam voluptas eveniet accusamus nemo nam. Corporis, sint facere.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, rem odit. Dolorem, soluta magnam veritatis explicabo cum quos dicta dolor tenetur dignissimos molestiae. Odio, dolorem quisquam molestias laudantium sequi excepturi.
+                <p>
+                    This Blueprint allows you to make an object animate by following a path.<br />
+                    Note: The path is an actual spline object in world space. It can be manipulated very easily to get
+                    relative animations.
                 </p>
-                <div id="bp1" data-file="test.txt" width="1500" height="400"></div>
+                <div id="bp1" data-file="pathanimation.txt" width="800" height="400"></div>
             </div>
         </article>
+
+        <article class="card">
+            <div class="title">
+                <label>3</label>
+                <h1 class="">
+                    Rotate Animation
+                </h1>
+            </div>
+            <div class="para">
+                <p>
+                    This Blueprint allows you to make an object rotate.
+                </p>
+                <div id="bp1" data-file="rotator2.txt" width="800" height="400"></div>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="title">
+                <label>4</label>
+                <h1 class="">
+                    Test Blueprint
+                </h1>
+            </div>
+            <div class="para">
+                <p>
+                    This is a test blueprint.
+                </p>
+                <div id="bp1" data-file="ProceduralMesh2.txt" width="800" height="400"></div>
+            </div>
+        </article>
+
 
     </div>
 
 
 
     <!-- These scripts will always be at the end -->
-    <script src="https://cdn.rawgit.com/strelok2012/BluePrintRenderer/b43836d54bb91606d9ebf8a5845784f54a3e566a/dist/blueprint-renderer.js"></script>
-    <script src="app.js"></script>    
+    <script src="bpr.js"></script>
+    <script>
+        function select(arg) {
+            return document.querySelector(arg);
+        }
+        function selectAll(arg) {
+            return document.querySelectorAll(arg);
+        }
+
+        window.addEventListener('load', () => {
+
+            const list = document.querySelectorAll('div[data-file]');
+            for (const item of list) {
+                const id = item.getAttribute('id');
+                const file = item.getAttribute('data-file');
+                const path = `files/${file}`;
+                const bp = new BlueprintRenderer(id);
+                bp.renderFromFile(path);
+            }
+
+            setTimeout(() => {
+                const svgContainer = document.querySelector('#svgContainer');
+                const svgs = Array.from(svgContainer.children);
+                const listArray = Array.from(list);
+                for (let i in svgs) {
+                    const item = listArray[i];
+                    const width = item.getAttribute('width');
+                    const height = item.getAttribute('height');
+                    svgs[i].setAttribute('width', width);
+                    svgs[i].setAttribute('height', height);
+                    item.appendChild(svgs[i]);
+                }
+            }, 200)
+
+        })
+
+    </script>
 </body>
 
 </html>
