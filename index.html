@@ -108,43 +108,14 @@
 
 
     </div>
-    <script
-        src="https://cdn.rawgit.com/strelok2012/BluePrintRenderer/b43836d54bb91606d9ebf8a5845784f54a3e566a/dist/blueprint-renderer.js"></script>
-    <script>
-        function select(arg) {
-            return document.querySelector(arg);
-        }
-        function selectAll(arg) {
-            return document.querySelectorAll(arg);
-        }
-
-
-        const list = document.querySelectorAll('div[data-file]');
-        for (const item of list) {
-            const id = item.getAttribute('id');
-            const file = item.getAttribute('data-file');
-            const path = `files/${file}`;
-            const bp = new BlueprintRenderer(id);
-            bp.renderFromFile(path);
-        }
-
-        setTimeout(() => {
-            const svgContainer = document.querySelector('#svgContainer');
-            const svgs = Array.from(svgContainer.children);
-            const listArray = Array.from(list);
-            for (let i in svgs) {
-                const item = listArray[i];
-                const width = item.getAttribute('width');
-                const height = item.getAttribute('height');
-                svgs[i].setAttribute('width', width);
-                svgs[i].setAttribute('height', height);
-                item.appendChild(svgs[i]);
-            }
-        }, 200)
-    </script>
 
 
 
+
+
+    <!-- These scripts will always be at the end -->
+    <script src="https://cdn.rawgit.com/strelok2012/BluePrintRenderer/b43836d54bb91606d9ebf8a5845784f54a3e566a/dist/blueprint-renderer.js"></script>
+    <script src="app.js"></script>    
 </body>
 
 </html>
