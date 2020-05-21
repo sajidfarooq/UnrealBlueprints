@@ -9,30 +9,99 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <style>
+        #svgContainer {
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -o-user-select: none;
+            user-select: none;
 
+        }
     </style>
 
 </head>
 
-<body class="bg-gray-300">
-    <div class="p-2">
-        <h1>Some heading here</h1>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem architecto libero similique veritatis veniam minima repellendus, earum vero. Officiis provident est beatae ut sit repellat itaque earum quis inventore voluptas.</p>
+<body class="bg-gray-200">
+    <div class="p-8">
+
+
+
+        <!-- Article -->
+        <article class="p-8 bg-white shadow-md rounded my-4">
+            <div class="text-xl flex">
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-center mr-5">1</div>
+                <h1 class="">
+                    Install Tailwind via npm
+                </h1>
+            </div>
+            <p class="pl-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero fugit cum sed natus itaque, rem pariatur
+                sit minima inventore? Facilis, explicabo. Nobis error, repellat aliquid unde optio suscipit officiis
+                voluptates.</p>
+            <div id="bp1" class="ml-12 mt-2" data-file="test.txt" width="1000" height="200"></div>
+        </article>
+       
+        <article class="p-8 bg-white shadow-md rounded my-4">
+            <div class="text-xl flex">
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-center mr-5">1</div>
+                <h1 class="">
+                    Install Tailwind via npm
+                </h1>
+            </div>
+            <p class="pl-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero fugit cum sed natus itaque, rem pariatur
+                sit minima inventore? Facilis, explicabo. Nobis error, repellat aliquid unde optio suscipit officiis
+                voluptates.</p>
+            <div id="bp1" class="ml-12 mt-2" data-file="test.txt" width="1000" height="200"></div>
+        </article>
+
+        <article class="p-8 bg-white shadow-md rounded my-4">
+            <div class="text-xl flex">
+                <div class="w-8 h-8 rounded-full bg-gray-300 text-center mr-5">1</div>
+                <h1 class="">
+                    Install Tailwind via npm
+                </h1>
+            </div>
+            <p class="pl-12">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero fugit cum sed natus itaque, rem pariatur
+                sit minima inventore? Facilis, explicabo. Nobis error, repellat aliquid unde optio suscipit officiis
+                voluptates.</p>
+            <div id="bp1" class="ml-12 mt-2" data-file="test.txt" width="1000" height="200"></div>
+        </article>
+
+
     </div>
     <script
-        src="https://cdn.rawgit.com/strelok2012/BluePrintRenderer/f0ebd3b179e0b829c943961442f524e663ef2b9a/dist/main.js"></script>
+        src="https://cdn.rawgit.com/strelok2012/BluePrintRenderer/b43836d54bb91606d9ebf8a5845784f54a3e566a/dist/blueprint-renderer.js"></script>
     <script>
-        prepare(document, "files/test.txt");
-
-        function select(arg){
+        function select(arg) {
             return document.querySelector(arg);
+        }
+        function selectAll(arg) {
+            return document.querySelectorAll(arg);
+        }
+
+
+        const list = document.querySelectorAll('div[data-file]');
+        for (const item of list) {
+            const id = item.getAttribute('id');
+            const file = item.getAttribute('data-file');
+            const path = `files/${file}`;
+            const bp = new BlueprintRenderer(id);
+            bp.renderFromFile(path);
         }
 
         setTimeout(() => {
-            const canvas = select('canvas');
-            // canvas.setAttribute('width',600);
-        },1000);
-
+            const svgContainer = document.querySelector('#svgContainer');
+            const svgs = Array.from(svgContainer.children);
+            const listArray = Array.from(list);
+            for (let i in svgs) {
+                const item = listArray[i];
+                const width = item.getAttribute('width');
+                const height = item.getAttribute('height');
+                svgs[i].setAttribute('width', width);
+                svgs[i].setAttribute('height', height);
+                item.appendChild(svgs[i]);
+            }
+        }, 200)
     </script>
 
 
